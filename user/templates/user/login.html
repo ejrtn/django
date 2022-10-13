@@ -1,0 +1,25 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>info</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="{% static 'css/user.css' %}" rel="stylesheet">
+        <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="{% static 'js/csrf.js' %}"></script>
+        <script src="{% static 'js/user_data.js' %}"></script>
+    </head>
+    <body>
+        <h1>LOGIN</h1>
+        <div class="main">
+            <img src="{% static 'images/video.png' %}">
+            <div>
+                <input type="text" placeholder="id" name="id">
+                <input type="text" placeholder="pw" name="pw">
+                <input type="button" value="LOGIN" class="btn login">
+                <input type="button" value="JOIN" class="btn join">
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+{% load static%}
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title>main</title>
+        <meta charset="UTF-8">
+        <meta http-equiv='cache-control' content='no-cache'>
+        <meta http-equiv='expires' content='0'>
+        <meta http-equiv='pragma' content='no-cache'>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/css/main.css" rel="stylesheet">
+        <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/static/js/csrf.js"></script>
+        <script src="/static/js/video_data.js"></script>
+        <script src="/static/js/video_ui.js"></script>
+        <script src="/static/js/action.js"></script>
+    </head>
+    <body>
+        <div class="main">
+            <div class="category">
+                {% for category in videoCategory%}
+                    <label for="{{category.id}}">{{ category.name }}</label>
+                {% endfor %}
+            </div>
+            <div class="video_list">
+            </div>
+            <button>더보기</button>
+        </div>
+    </body>
+</html>
