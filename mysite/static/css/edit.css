@@ -199,3 +199,15 @@ table img:not(.del){
 .border_color_red{
     border-color: red;
 }
+
+.data_add{
+    margin: 10px 0px;
+    font-size: 20px;
+    border: 0;
+    cursor: pointer;
+    background-color: rgba( 255, 255, 255, 0.5 );
+}
+
+.display_none{
+    display: none;
+}

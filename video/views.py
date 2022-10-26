@@ -60,10 +60,11 @@ def videoList(request):
         else:
             q = Video.objects.values('title','url_small','thumbnail_small','videoCategory_id','id')
         
-        num = request.POST.getlist('numStart[]')        
-        result = list(q[int(num[0]):int(num[1])])
+        num = request.POST.getlist('numStart[]')
+        result = list(q[int(num[0]):int(num[0])+int(num[1])])
         category = list(VideoCategory.objects.values())
-        return JsonResponse({'result':result,'category':category})
+        add = len(list(q[int(num[0]):int(num[1])+1])) > len(result) if True else False
+        return JsonResponse({'result':result,'category':category,'add_tf':add})
         
     else:
         return JsonResponse({'result':['error']})

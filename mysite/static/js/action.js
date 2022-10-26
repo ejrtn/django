@@ -8,6 +8,28 @@
 let file_thumbnail = null
 let file_video = null
 
+/**
+ * 데이터 가져오는 갯수
+ */
+let limit = 20
+
+/**
+ * 데이터 시작 위치
+ */
+let data_next = 0
+
+/**
+ * 검색 값 및 타입
+ */
+let search_data = ''    // 검색 값
+let search_type = 'all' // 검색 타입
+
+function search_config_reset(){
+    limit = 20
+    data_next = 0
+    search_data = ''
+    search_type = 'all'
+}
 
 /**
  * video mouseover event
@@ -123,24 +145,16 @@ function drag_video_check(data){
 }
 
 $(function(){
-    if(window.location.href==='http://127.0.0.1:8000/'){
-        video_list('/',parseInt(document.querySelectorAll('.category label')[0].htmlFor),document.querySelectorAll('.category label')[0].textContent,'category',[0,20])
-
-        document.querySelector('.category').addEventListener('click',function(e){
-            if(typeof(e.target.htmlFor) !== 'undefined'){
-                video_list('/',parseInt(e.target.htmlFor),e.target.textContent,'category',[0,20])
-            }
-        })
-    }
     if(window.location.href.includes('edit')){
-        video_list('/edit','',null,'all',[0,20])
+        video_list('/edit','',null,'all',[data_next,limit])
         document.getElementsByClassName('search_btn')[0].addEventListener('click',function(){
-            const type = document.getElementsByClassName('search_type')[0].value
+            search_type = document.getElementsByClassName('search_type')[0].value
             let data = document.querySelector('.search input').value
-            if(type==='category') { 
+            if(search_type==='category') { 
                 data = document.getElementsByClassName('search_category')[0].children[document.getElementsByClassName('search_category')[0].selectedIndex].id
             }
-            video_list('/edit',data,null,type,[0,10])
+            search_data = data
+            video_list('/edit',search_data,null,search_type,[data_next,limit])
         })
         document.querySelector('tbody').addEventListener('click',function(e){
             if(e.target.className==='del'){
@@ -223,8 +237,7 @@ $(function(){
                 document.querySelectorAll('.file_video')[1].style.display='none'
                 document.querySelector('.modal_video').style.display='block'
                 document.querySelector('.div_video').classList.add('border_0')
-                console.log(e)
-                e
+               
             })
         })
 
@@ -387,8 +400,6 @@ $(function(){
                         alert('영상 선택 해주세요')
                     }else{
                         video_save(file_thumbnail,file_video)
-                        document.getElementsByClassName('modal')[0].style.display='none'
-                        video_list('/edit','',null,'all',[0,20])
                     }
                 }else{
                     alert('함')
@@ -398,6 +409,14 @@ $(function(){
             }else{
                 video_save(file_thumbnail,file_video)
             }
+        })
+
+        /**
+         * 데이터 추가
+         */
+        document.getElementsByClassName('data_add')[0].addEventListener('click',function(){
+            data_next += 20
+            video_list('/edit',search_data,null,search_type,[data_next,limit])
         })
     }
 })

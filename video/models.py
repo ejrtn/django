@@ -40,10 +40,11 @@ class Video(models.Model):
     
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        img = Image.open(self.thumbnail_small)
-        target_width = 300
-        target_height = 169
-        img = img.resize((int(target_width), int(target_height)), Image.ANTIALIAS)
-        img.save(self.thumbnail_small.path, quality=100)
-        img.close()
+        if self.thumbnail_small != None:
+            img = Image.open(self.thumbnail_small)
+            target_width = 300
+            target_height = 169
+            img = img.resize((int(target_width), int(target_height)), Image.ANTIALIAS)
+            img.save(self.thumbnail_small.path, quality=100)
+            img.close()
         self.thumbnail_small.close()

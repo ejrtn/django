@@ -42,6 +42,7 @@ html, body{
 .video_list{
     width: 100%;
     align-items: center;
+    margin-top: 40px;
 }
 
 .video_list h3{
@@ -53,6 +54,7 @@ html, body{
 .video_list .plays{
     display: flex;
     justify-content: center;
+    cursor: pointer;
 }
 
 .video_list .progress{
@@ -75,10 +77,14 @@ video{
 }
 
 
-button{
+.data_add{
     margin-top: 20px;
     font-size: 20px;
     border: 0;
     cursor: pointer;
     background-color: rgba( 255, 255, 255, 0.5 );
+}
+
+.display_none{
+    display: none;
 }
