@@ -11,7 +11,7 @@ def main(request):
     if request.session.get('id',False)==False:
         return redirect('/user/login')      
     else:
-        return render(request,'video/main.html',{'videoCategory':VideoCategory.objects.all()})
+        return render(request,'video/main.html',{'videoCategory':VideoCategory.objects.all(),'id':request.session['id']})
 
 def edit(request):
     if request.session.get('id',False)==False:

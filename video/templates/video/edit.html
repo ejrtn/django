@@ -8,7 +8,9 @@
         <meta http-equiv='pragma' content='no-cache'>
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/static/css/edit.css" rel="stylesheet">
+        <link href="/static/css/header.css" rel="stylesheet">
         <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/static/js/header.js"></script>
         <script src="/static/js/csrf.js"></script>
         <script src="/static/js/video_data.js"></script>
         <script src="/static/js/video_ui.js"></script>
@@ -17,6 +19,24 @@
         
     </head>
     <body>
+        <header>
+            <img src="/static/images/video.png" class="logo">
+            <span class="title">동영상 보는 사이트</span>
+            <div class="page_move">
+                <span class="video_page_move">Video</span>
+                <span class="live_page_move">Live</span>    
+            </div>
+            <div class="menu">
+                <img src="/static/images/menu.png" class="menu_icon">
+                <ul class="menu_list">
+                    <li class="menu_edit">edit</li>
+                    <li class="menu_logout">logout</li>
+                    <li class="menu_home">home</li>
+                    <li class="menu_video">Video</li>
+                    <li class="menu_live">Live</li>
+                </ul>
+            </div>
+        </header>
         <div class="main">
             <div class="search">
                 <select class="search_type">
@@ -70,7 +90,7 @@
                                 <option id="{{category.id}}">{{category.name}}</option>
                             {% endfor %}
                         </select>
-                        <input type="text" class="title" placeholder="title">
+                        <input type="text" class="video_title" placeholder="video title">
                         <input type="button" class="modal_ok" value="확인">
                         <textarea class="content">설명 적는 곳</textarea>
                     </div>

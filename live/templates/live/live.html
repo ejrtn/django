@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link href="/static/css/header.css" rel="stylesheet">
+        <link href="/static/css/live.css" rel="stylesheet">
+        <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script src="/static/js/csrf.js"></script>
+        <script>
+            let id = '{{id}}'
+        </script>
+        <script src="/static/js/header.js"></script>
+        <script src="/static/js/live_data.js"></script>
+        <script src="/static/js/live_event.js"></script>
+        
+    </head>
+    <body>
+        <header>
+            <img src="/static/images/video.png" class="logo">
+            <span class="title">동영상 보는 사이트</span>
+            <div class="page_move">
+                <span class="video_page_move">Video</span>
+                <span class="live_page_move">Live</span>  
+            </div>
+            <div class="menu">
+                <img src="/static/images/menu.png" class="menu_icon">
+                <ul class="menu_list">
+                    <li class="menu_edit">edit</li>
+                    <li class="menu_logout">logout</li>
+                    <li class="menu_home">home</li>
+                    <li class="menu_video">Video</li>
+                    <li class="menu_live">Live</li>
+                </ul>
+            </div>
+        </header>
+        <div>
+            <div>
+                <div></div>
+            </div>
+            <div class="div_live">
+                <div class="live_video">
+                    <img src="/static/images/on_air.png" alt="on_air">
+                    <video controls loop>
+                        <source src="/media/video/꽃.mp4">
+                        <strong>Your browser does not support the video tag.</strong>
+                    </video>
+                </div>
+                <div class="live_chatting">
+                    <img src="/static/images/user_icon.png" alt="user_icon" class="user_icon">
+                    <textarea wrap="on" class="chatting_out" readonly="readonly"></textarea>
+                    <textarea wrap="on" class="chatting_in"></textarea>
+                </div>
+                <div class="live_list">
+                    <img src="/static/images/x.png" alt="x" class="x_btn">
+                    <select class="live_category">
+                        <option value="전체">전체</option>
+                        {% for category in videoCategory%}
+                            <option value="{{category.id}}">{{category.name}}</option>
+                        {% endfor %}
+                    </select>
+                    <div class="live_search">
+                        <input type="text" placeholder="검색">
+                        <img src="/static/images/search.png" alt="검색">
+                        <div class="live_name_list"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>

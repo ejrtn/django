@@ -21,6 +21,7 @@ from django.conf import settings
 urlpatterns = [
     path('user/', include('user.urls')),
     path('', include('video.urls')),
+    path('', include('live.urls')),
     path('admin/', admin.site.urls),
 ]
 

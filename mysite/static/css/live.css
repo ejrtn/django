@@ -1,0 +1,89 @@
+.div_live{
+    display: flex;
+    height: 650px;
+        
+}
+.x_btn{
+    width: 30px;
+    float: right;
+    cursor: pointer;
+}
+.live_video{
+    flex-grow: 1;
+    border: 1px solid black;
+    margin-right: 20px;
+    height: 650px;
+    position: relative;
+}
+.live_video img{
+    position: absolute;
+    width: 100px;
+    top: 0px;
+    left: 0px;
+    z-index: 1;
+}
+.live_video video{
+    width: 100%;
+    height: 100%;
+}
+
+.live_chatting{
+    width: 250px;
+    height: 650px;
+    border: 1px solid black;
+    margin-right: 20px;
+    position: relative;;
+}
+.live_chatting .chatting_out{
+    height: 586px;
+    width: 246px;
+    resize: none;
+    border: none;
+    outline: none;
+}
+.live_chatting .chatting_in{
+    width: 246px;
+    resize: none;
+    height: 50px;
+    border: none;
+    font-size: 15px;
+    border-top: 1px solid;
+    outline: none;
+}
+
+.live_list{
+    width: 250px;
+    border: 1px solid black;
+    height: 650px;
+}
+.live_search{
+    position: relative;
+}
+.live_category{
+    font-size: 20px;
+    width: 250px;
+    text-align: center;
+}
+.live_search input{
+    font-size: 20px;
+    width: 214px;
+    padding-right: 30px;
+}
+.live_search img{
+    position: absolute;
+    height: 30px;
+    top: 0;
+    right: 0;
+    cursor: pointer;
+}
+
+.display_none{
+    display: none;
+}
+.user_icon{
+    position: absolute;
+    width: 30px;
+    right: 10px;
+    top: 10px;
+    cursor: pointer;
+}
