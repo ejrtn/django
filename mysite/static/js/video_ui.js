@@ -5,7 +5,7 @@ function main_ui(data,category_name,add_tf) {
             t += '<div class="plays">'
         }
         t += '<div class="play"><video muted loop class="vid" >'
-        t += '<source src="/media/'+data[i]['url_small']+'">'
+        t += '<source src="/media/'+data[i]['url_small']+'" type="video/mp4">'
         t += '<strong>Your browser does not support the video tag.</strong>'
         t += '</video>'
         if(data[i]['thumbnail_small'] != '') {t += '<img src="/media/'+data[i]['thumbnail_small']+'">'}
@@ -52,7 +52,7 @@ function edit_ui(data,category,add_tf){
         t += '</tr>'
     }
     if(data.length==0) {
-        t = '<tr><td colspan="5"><h3>데이터 없음</h3></td><tr>'
+        t = '<tr><td colspan="5"><h3>데이터 없음</h3></td></tr>'
         document.querySelector('.data_add').parentElement.classList.add('display_none')
     }
 

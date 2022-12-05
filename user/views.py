@@ -42,6 +42,7 @@ def loginCheck(request):
         try:
             result = User.objects.values().get(user_id=data.get('user_id'),pw=data.get('pw'))
             request.session['id']=data.get('user_id')
+            print(result)
             return JsonResponse({'result':list(result.values())})
         except User.DoesNotExist as e:
             return JsonResponse({'result':[]})
@@ -54,27 +55,13 @@ def logout(requset):
     return render(requset,'user/login.html')
 
 
-def subName(request):
-    user = User.objects.filter(user_id=request.POST.get('id'))
-    if request.method=='POST':
-        return JsonResponse({'result':list(user.values('name','sub_name','sub_name_tf'))})
-    else:
-        return JsonResponse({'result':['error']})
-
 def subNameUpdate(request):
     if request.method=='POST':
-        user = User.objects.get(id=request.POST.get('id'))
-        user.sub_name = request.POST.get('re_su_name')
-        result = User.objects.values().get(user_id=request.POST.get('id'))
-        return JsonResponse({'result':list(result.values('sub_name'))})
+        user = User.objects.get(sub_name=request.POST.get('sub_name_ing'))
+        user.sub_name = request.POST.get('sub_name_new')
+        user.save()
+        result = User.objects.values('sub_name').get(sub_name=request.POST.get('sub_name_new'))
+        return JsonResponse({'result':result['sub_name']})
     else:
         return JsonResponse({'result':['error']})
 
-def subNameTfUpdate(request):
-    if request.method=='POST':
-        user = User.objects.get(id=request.POST.get('id'))
-        user.sub_name_tf = request.POST.get('re_su_name_tf')
-        result = User.objects.values('sub_name_tf').get(user_id=request.POST.get('id'))
-        return JsonResponse({'result':list(result.values())})
-    else:
-        return JsonResponse({'result':['error']})

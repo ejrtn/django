@@ -13,7 +13,10 @@ function video_list(href,data,category_name,type,num){
         data: {'X-CSRFTOKEN':'{{ csrf_token }}','data':data,'type':type,'numStart[]':num},
         success: function (data) {
             if(href==='/') main_ui(data['result'],category_name,data['add_tf']);
-            if(href==='/edit') edit_ui(data['result'],data['category'],data['add_tf']);
+            if(href==='/edit') {
+                document.querySelector('tbody').innerHTML=''; 
+                edit_ui(data['result'],data['category'],data['add_tf']);
+            }
         },
         error: function (error) {
             console.log(error)
@@ -31,7 +34,7 @@ function video_save(file_thumbnail,file_video){
     let formData = new FormData();
     formData.append('X-CSRFTOKEN','{{ csrf_token }}')
     formData.append('category',document.getElementsByClassName('category')[0].selectedOptions[0].id)
-    formData.append('title',document.getElementsByClassName('title')[0].value)
+    formData.append('title',document.getElementsByClassName('video_title')[0].value)
     formData.append('content',document.getElementsByClassName('content')[0].textContent)
     formData.append('thumbnail',file_thumbnail)
     formData.append('video',file_video)
@@ -68,7 +71,6 @@ function video_del(id){
         url: "/videoDel/",
         data: {'X-CSRFTOKEN':'{{ csrf_token }}','id':id},
         success: function (data) {
-            console.log(data['result'])
             if(data['result']==='success') {
                 search_config_reset()
                 video_list('/edit',search_data,null,search_type,[data_next,limit]);

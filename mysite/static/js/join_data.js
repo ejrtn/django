@@ -13,7 +13,7 @@ function userSave(obj){
             if(data['result']=='id 존재'){
                 alert('해당 ID는 이미 존재합니다')
             }else if(data['result']=='sub_name 존재'){
-                alert('해당 닉네임은 미지 존재합니다.')
+                alert('해당 닉네임은 이미 존재합니다.')
             }else{
                 location.href = '/user/login'
             }

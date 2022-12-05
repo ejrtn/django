@@ -4,6 +4,7 @@ import os
 from django.utils import timezone
 from django.conf import settings
 from PIL import Image
+import cv2
 
 # Create your models here.
 
@@ -47,4 +48,35 @@ class Video(models.Model):
             img = img.resize((int(target_width), int(target_height)), Image.ANTIALIAS)
             img.save(self.thumbnail_small.path, quality=100)
             img.close()
+        if self.url_small != None:
+            print(str(self.url_small.file))
+            cap = cv2.VideoCapture('D:/python_venv/django/mysite/media/'+str(self.url))
+
+            fps = 30
+            fcc = cv2.VideoWriter_fourcc(*'avc1')
+            out = cv2.VideoWriter('D:/python_venv/django/mysite/media/'+str(self.url_small), fcc, fps, (320, 180))
+
+            while (cap.isOpened()) :
+                # read : 프레임 읽기
+                # [return]
+                # 1) 읽은 결과(True / False)
+                # 2) 읽은 프레임
+                retval, frame = cap.read()
+
+                # 읽은 프레임이 없는 경우 종료
+                if not retval:
+                    break
+                
+                resize_frame = cv2.resize(frame, (320, 180), interpolation=cv2.INTER_CUBIC)
+
+                out.write(resize_frame)
+                
+                # 'q' 를 입력하면 종료
+                if cv2.waitKey(1) & 0xFF == ord('q'):
+                    break
+
+            cap.release()
+            out.release()
+            cv2.destroyAllWindows()
         self.thumbnail_small.close()
+        self.url_small.close()

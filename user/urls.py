@@ -9,8 +9,6 @@ urlpatterns = [
     path('userSave/', views.userSave, name='userSave'),
     path('info/', views.info, name='info'),
     path('loginCheck/',views.loginCheck, name='loginCheck'),
-    path('subName/',views.subName, name='subName'),
     path('subNameUpdate/',views.subNameUpdate, name='subNameUpdate'),
-    path('subNameTfUpdate/',views.subNameTfUpdate, name='subNameTfUpdate'),
     
 ]

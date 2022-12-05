@@ -390,7 +390,7 @@ $(function(){
          * 영상 등록 modal 확인 버튼
          */
         document.getElementsByClassName('modal_ok')[0].addEventListener('click',function(){
-            if(document.getElementsByClassName('title')[0].value.replaceAll(/ /g,"")===''){
+            if(document.getElementsByClassName('video_title')[0].value.replace(/ /g,"")===''){
                 alert('영상 제목 입력해주세요')
             }else if(document.getElementsByClassName('file_thumbnail')[0].style.display!='none'){
                 s = confirm('썸네일 등록 여부')

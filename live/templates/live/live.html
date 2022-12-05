@@ -6,17 +6,22 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href="/static/css/header.css" rel="stylesheet">
         <link href="/static/css/live.css" rel="stylesheet">
+        <link href="/static/css/modal.css" rel="stylesheet">
         <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
         <script src="/static/js/csrf.js"></script>
         <script>
-            let id = '{{id}}'
+            let sub_name = '{{sub_name}}'
         </script>
         <script src="/static/js/header.js"></script>
         <script src="/static/js/live_data.js"></script>
         <script src="/static/js/live_event.js"></script>
-        
+        <script src="/static/js/modal.js"></script>
     </head>
     <body>
+        <div class="modal">
+            <div class="modal_ui">
+            </div>
+        </div>
         <header>
             <img src="/static/images/video.png" class="logo">
             <span class="title">동영상 보는 사이트</span>
@@ -27,8 +32,9 @@
             <div class="menu">
                 <img src="/static/images/menu.png" class="menu_icon">
                 <ul class="menu_list">
-                    <li class="menu_edit">edit</li>
+                    <li class="menu_info">Info</li>
                     <li class="menu_logout">logout</li>
+                    <li class="menu_edit">edit</li>
                     <li class="menu_home">home</li>
                     <li class="menu_video">Video</li>
                     <li class="menu_live">Live</li>
@@ -43,12 +49,15 @@
                 <div class="live_video">
                     <img src="/static/images/on_air.png" alt="on_air">
                     <video controls loop>
-                        <source src="/media/video/꽃.mp4">
+                        <source src="/media/video/a.mp4">
                         <strong>Your browser does not support the video tag.</strong>
                     </video>
                 </div>
                 <div class="live_chatting">
-                    <img src="/static/images/user_icon.png" alt="user_icon" class="user_icon">
+                    <div class="sub_name_change">
+                        <img src="/static/images/user_icon.png" alt="user_icon" class="user_icon">
+                        <p>별칭</p>
+                    </div>
                     <textarea wrap="on" class="chatting_out" readonly="readonly"></textarea>
                     <textarea wrap="on" class="chatting_in"></textarea>
                 </div>
