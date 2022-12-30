@@ -13,3 +13,12 @@ class User(models.Model):
 
     def __str__(self):
         return self.user_id
+
+
+# 즐겨찾기
+class Star(models.Model):
+    user_id = models.CharField(max_length=200)
+    user_id_list = models.TextField()
+
+    def __str__(self) -> str:
+        return self.user_id

@@ -1,6 +1,7 @@
 
 from django.db import models
 from django.utils import timezone
+from video.models import VideoCategory
 
 # Create your models here.
 
@@ -33,7 +34,9 @@ class ChattingWarning(models.Model):
     def __str__(self):
         return self.user_id
 
+# 채팅 입력 불가능 리스트
 class ChattingDataBlackList(models.Model):
+    user_id = models.CharField(max_length=200)
     chatting = models.TextField()
     
     def __str__(self):
@@ -45,12 +48,15 @@ class Live(models.Model):
         ('T','T'),
         ('F','F')
     )
-    name = models.CharField(max_length=200)
-    chatting = models.CharField(max_length=2,choices=TrueFalse)
-    back = models.CharField(max_length=2,choices=TrueFalse)
+    title = models.CharField(max_length=255,default='')                        # 방송 제목
+    user_id = models.CharField(max_length=200)                      # 방송중인 유저
+    chatting = models.CharField(max_length=2,choices=TrueFalse)     # 채팅 가능 여부
+    back = models.CharField(max_length=2,choices=TrueFalse)         # 뒤로가기 가능 여부
+    videoCategory = models.ForeignKey(VideoCategory, on_delete=models.PROTECT)      # 카테고리
+    src = models.TextField(default='')                                                        # 영상 주소
 
     def __str__(self):
-        return self.name
+        return self.title
 
 class ChattingData(models.Model):
     live = models.ForeignKey(Live, on_delete=models.CASCADE)

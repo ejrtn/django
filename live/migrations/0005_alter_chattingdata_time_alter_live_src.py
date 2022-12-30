@@ -6,18 +6,18 @@ from django.db import migrations, models
 class Migration(migrations.Migration):
 
     dependencies = [
-        ("video", "0019_alter_video_cdate_alter_video_udate"),
+        ("live", "0004_alter_chattingdata_time"),
     ]
 
     operations = [
         migrations.AlterField(
-            model_name="video",
-            name="cdate",
+            model_name="chattingdata",
+            name="time",
             field=models.DateTimeField(default="2022-12-29 05:37:48"),
         ),
         migrations.AlterField(
-            model_name="video",
-            name="udate",
-            field=models.DateTimeField(default="2022-12-29 05:37:48"),
+            model_name="live",
+            name="src",
+            field=models.TextField(default=""),
         ),
     ]

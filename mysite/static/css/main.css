@@ -1,3 +1,6 @@
+html{
+    background-color: #2d2d2d;
+}
 html, body{
     width: 100%;
     height: 100%;
@@ -14,6 +17,7 @@ html, body{
     flex-flow: column;
     margin: 10px 10px 0px 10px;
     position: relative;
+    cursor: pointer;
 }
 .play img{
     width: 200px;
@@ -21,6 +25,7 @@ html, body{
     position: absolute;
     top: 0;
     left: 0;
+    cursor: pointer;
 }
 
 .category{
@@ -54,7 +59,7 @@ html, body{
 .video_list .plays{
     display: flex;
     justify-content: center;
-    cursor: pointer;
+    
 }
 
 .video_list .progress{

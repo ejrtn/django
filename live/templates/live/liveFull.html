@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script  src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <link href="/static/css/liveFull.css" rel="stylesheet">
+        <script src="/static/js/csrf.js"></script>
+        <script>
+            let live_user = '{{live_user}}'
+        </script>
+        <script src="/static/js/live_ui.js"></script>
+        <script src="/static/js/live_data.js"></script>
+        <script src="/static/js/liveFull_enent.js"></script>
+    </head>
+    <body>
+        <div class="live_video">
+            <video src="" muted>
+            </video>
+            <div class="video_controls">
+                <div class="live_run">
+                    <img src="/static/images/pause.png" class="run">
+                    <div class="live_bar">
+                        <div class="live_bar_sub">
+                        </div>
+                    </div>
+                    <input class="live_sound_ui" type="range" value="100">
+                    <img class="live_sound" src="/static/images/sound.png">
+                    <div class="live_zise">
+                        <div class="live_zise_sub1"><div></div><div></div></div>
+                        <div class="live_zise_sub2"><div></div><div></div></div>
+                    </div>
+                    <div class="live_option">
+                        <div></div>
+                        <div></div>
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+</html>
